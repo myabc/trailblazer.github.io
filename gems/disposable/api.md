@@ -317,15 +317,16 @@ Map that using the `Struct` module.
 ```ruby
 class AlbumTwin < Disposable::Twin
   property :permissions do
-     include Struct
+    include Struct
+
     property :admin do
       include Struct
       property :read
       property :write
     end
 
-    property :user # you don't have to use Struct everywhere!
-  end
+  property :user # you don't have to use Struct everywhere!
+end
 ```
 
 You get fully object-oriented access to your properties.
@@ -364,12 +365,12 @@ You can override getters for presentation.
 
 ```ruby
 class AlbumTwin < Disposable::Twin
-    property :title
+  property :title
 
-    def title
-      super.upcase
-    end
+  def title
+    super.upcase
   end
+end
 ```
 
 Be careful, though. The getter normally is also called in `sync` when writing properties to the models.
@@ -388,12 +389,12 @@ You can override setters for manual coercion.
 
 ```ruby
 class AlbumTwin < Disposable::Twin
-    property :title
+  property :title
 
-    def title=(v)
-      super(v.trim)
-    end
+  def title=(v)
+    super(v.trim)
   end
+end
 ```
 
 Be careful, though. The setter normally is also called in `setup` when copying properties from the models to the twin.
